@@ -18,8 +18,9 @@ install:
   - source devtools/travis-ci/install_conda.sh
   - conda config --set always_yes yes --set changeps1 no
   - conda create -n test-environment python=$PYTHON_VERSION
-  - conda install -c conda-forge pytest
   - source activate test-environment
+  - conda install -c conda-forge pytest
+  - conda install -c mosdef foyer --only-deps
   - pip install git+https://github.com/mosdef-hub/foyer
   - pip install -e .
 
