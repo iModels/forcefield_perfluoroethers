@@ -20,7 +20,7 @@ install:
   - conda config --add channels mosdef
   - conda create -n test-environment python=$PYTHON_VERSION --file requirements.txt
   - source activate test-environment
-  - conda uninstall -y foyer
+  - conda uninstall -y --force foyer
   - pip install git+https://github.com/mosdef-hub/foyer
   - pip install -e .
 
