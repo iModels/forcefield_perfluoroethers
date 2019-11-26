@@ -13,14 +13,14 @@ env:
   - COMMIT_AUTHOR_EMAIL: "andrew.z.summers@gmail.com"
 
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install md5sha1sum; fi
   - source devtools/travis-ci/install_conda.sh
   - conda config --set always_yes yes --set changeps1 no
-  - conda create -n test-environment python=$PYTHON_VERSION
+  - conda config --add channels omnia
+  - conda config --add channels conda-forge
+  - conda config --add channels mosdef
+  - conda create -n test-environment python=$PYTHON_VERSION --file requirements.txt
   - source activate test-environment
-  - conda install -c conda-forge pytest
-  - conda install --only-deps -c mosdef foyer
+  - conda uninstall -y foyer
   - pip install git+https://github.com/mosdef-hub/foyer
   - pip install -e .
 
