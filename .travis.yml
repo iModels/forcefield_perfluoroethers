@@ -20,7 +20,7 @@ install:
   - conda create -n test-environment python=$PYTHON_VERSION
   - source activate test-environment
   - conda install -c conda-forge pytest
-  - conda install -c mosdef foyer --only-deps
+  - conda install --only-deps -c mosdef foyer
   - pip install git+https://github.com/mosdef-hub/foyer
   - pip install -e .
 
